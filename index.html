@@ -11,24 +11,63 @@
     <div class="container">
       <h1>MONOYA</h1>
       <div class="shape"></div>
-      <form class="signIn active" onsubmit="login(document.querySelector('.username').value, document.querySelector('.password').value); return false">
-          <h2>Sign In</h1>
-          <input class="username" name="username" type="text" placeholder="Username"/>
-          <input class="password" name="password" type="password" placeholder="Password"/>
-          <button class="signInButton">Log in</button>
-          <p>Haven't registered yet? <span class="switchButton">Click here</span></p>
+      <form
+        class="signIn active"
+        onsubmit="login(document.querySelector('.username').value, document.querySelector('.password').value); return false"
+      >
+        <h2>Sign In</h2>
+        <input
+          class="username"
+          name="username"
+          type="text"
+          placeholder="Username"
+        />
+        <input
+          class="password"
+          name="password"
+          type="password"
+          placeholder="Password"
+        />
+        <button class="signInButton">Log in</button>
+        <p>
+          Haven't registered yet? <span class="switchButton">Click here</span>
+        </p>
       </form>
-      <form class="register" action="">
-          <h2>Sign Up</h2>
-          <input class="firstName" type="text" name="first_name" placeholder="First Name">
-          <input class="lastName" type="text" name="last_name" placeholder="Last Name">
-          <input class="username" type="text" name="username" placeholder="Username">
-          <input class="email" type="email" name="email" placeholder="Email">
-          <input class="password" type="password" name="password" placeholder="Password">
-          <button class="signInButton">Register</button>
-          <p>Already registered? <span class="switchButton">Click here</span></p>
+      <form
+        class="register"
+        action="https://agile-tundra-03577.herokuapp.com/register/"
+        method="POST"
+      >
+        <h2>Sign Up</h2>
+        <input
+          class="firstName"
+          type="text"
+          name="first_name"
+          placeholder="First Name"
+        />
+        <input
+          class="lastName"
+          type="text"
+          name="last_name"
+          placeholder="Last Name"
+        />
+        <input
+          class="username"
+          type="text"
+          name="username"
+          placeholder="Username"
+        />
+        <input class="email" type="email" name="email" placeholder="Email" />
+        <input
+          class="password"
+          type="password"
+          name="password"
+          placeholder="Password"
+        />
+        <button class="signInButton">Register</button>
+        <p>Already registered? <span class="switchButton">Click here</span></p>
       </form>
     </div>
-    <script src="/scripts.js"></script>
+    <script src="/index.js"></script>
   </body>
 </html>

@@ -1,0 +1,30 @@
+@import url("https://fonts.googleapis.com/css2?family=Poiret+One&family=Roboto:wght@100;300&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  position: relative;
+  min-height: 100vh;
+}
+
+.modalContainer {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  min-height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.modal {
+  height: 70vh;
+  width: 50vw;
+  background: white;
+}

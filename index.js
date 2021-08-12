@@ -7,13 +7,13 @@ function login(username, password) {
   console.log(password);
   fetch("https://agile-tundra-03577.herokuapp.com/auth", {
     method: "POST",
-    body: JSON.stringify({
-      username: `${username}`,
-      password: `${password}`,
-    }),
     headers: {
       "Content-Type": "application/json",
     },
+    body: JSON.stringify({
+      username: username,
+      password: password,
+    }),
   })
     .then((response) => response.json())
     .then((data) => {
@@ -25,6 +25,27 @@ function login(username, password) {
         myStorage.setItem("password", password);
         window.location.href = "/home.html";
       }
+    });
+}
+
+function register(firstName, lastName, email, username, password) {
+  console.log(firstName, lastName, email, username, password);
+  fetch("https://agile-tundra-03577.herokuapp.com/register/", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      first_name: firstName,
+      last_name: lastName,
+      email: email,
+      username: username,
+      password: password,
+    }),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data);
     });
 }
 
