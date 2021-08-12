@@ -1,12 +1,25 @@
 let productUrl = "https://agile-tundra-03577.herokuapp.com/show-products/";
 let productContainer = document.querySelector(".productContainer");
 
+function userData(username) {
+  fetch(`https://agile-tundra-03577.herokuapp.com/get-user/'${username}'`, {
+    method: "GET",
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      console.log(data);
+      window.localStorage.setItem("user-id", data.user[0]);
+    });
+}
+
+userData(window.localStorage.getItem("username"));
+
 function fetchProducts(url) {
   fetch(url, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
-      Authorization: window.localStorage["jwt-token"],
+      Authorization: `jwt ${window.localStorage["jwt-token"]}`,
     },
   })
     .then((res) => res.json())

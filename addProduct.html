@@ -6,5 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
-  <body></body>
+  <body>
+    <form onsubmit="addProduct(); return false">
+      <input class="productName" type="text" placeholder="Name" />
+      <input class="productImage" type="file" onchange="previewFile();" />
+      <img src="" height="200" alt="Image preview..." />
+      <input class="productCategory" type="text" placeholder="Category" />
+      <input class="productDescription" type="text" placeholder="Description" />
+      <input class="productPrice" type="number" placeholder="Price" />
+      <button class="addButton">Submit</button>
+    </form>
+    <script src="/addproduct.js"></script>
+  </body>
 </html>
