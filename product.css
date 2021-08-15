@@ -60,6 +60,10 @@ body {
   pointer-events: none;
 }
 
+.profileMenu a {
+  margin: 10px 0;
+}
+
 .profileMenu.active {
   opacity: 1;
   pointer-events: initial;
@@ -83,7 +87,7 @@ h1::after {
 .innerContainer {
   display: grid;
   grid-gap: 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 250px));
   font-family: "Roboto", sans-serif;
 }
 
@@ -94,6 +98,13 @@ h1::after {
 }
 
 .product img {
+  width: 250px;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  object-position: center;
+}
+
+form img {
   width: 250px;
   aspect-ratio: 1 / 1;
   object-fit: cover;
@@ -123,6 +134,7 @@ h1::after {
   pointer-events: none;
   opacity: 0;
   transition: 0.3s ease;
+  z-index: 1;
 }
 
 .modal {
@@ -194,6 +206,24 @@ input {
 }
 
 .modal button {
+  border: none;
+  background: #222;
+  color: white;
+  padding: 5px;
+}
+
+form {
+  background: white;
+  display: flex;
+  flex-direction: column;
+  width: 50vw;
+  padding: 20px;
+  transform-origin: center;
+  transform: translateX(50%);
+  margin: 40px 0;
+}
+
+form button {
   border: none;
   background: #222;
   color: white;

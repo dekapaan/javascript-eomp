@@ -58,3 +58,26 @@ function editDetails() {
 document.querySelector(".fa-user").addEventListener("click", (e) => {
   document.querySelector(".profileMenu").classList.toggle("active");
 });
+
+let deleteButton = document.querySelector(".delete");
+
+function deleteUser() {
+  fetch(
+    `https://agile-tundra-03577.herokuapp.com/delete-user/${parseInt(
+      window.localStorage["user-id"]
+    )}/`,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `jwt ${window.localStorage["jwt-token"]}`,
+      },
+    }
+  )
+    .then((res) => res.json())
+    .then((data) => {
+      console.log(data);
+    });
+}
+
+deleteButton.addEventListener("click", deleteUser);

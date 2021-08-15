@@ -33,17 +33,19 @@
     <div class="modalContainer">
       <div class="modal"></div>
     </div>
+    <h1>Add Product</h1>
     <form onsubmit="addProduct(); return false">
-      <input class="productName" type="text" placeholder="Name" />
+      <input class="inputProductName" type="text" placeholder="Name" />
+      <input class="productCategory" type="text" placeholder="Category" />
+      <input class="productDescription" type="text" placeholder="Description" />
+      <input class="productPrice" type="number" placeholder="Price" />
       <input
         class="productImage"
         type="file"
         onchange="previewFile(document.querySelector('.addImg'));"
       />
       <img class="addImg" src="" height="200" alt="Image preview..." />
-      <input class="productCategory" type="text" placeholder="Category" />
-      <input class="productDescription" type="text" placeholder="Description" />
-      <input class="productPrice" type="number" placeholder="Price" />
+
       <button class="addButton">Submit</button>
     </form>
     <script src="/addproduct.js"></script>

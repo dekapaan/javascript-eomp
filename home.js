@@ -47,6 +47,7 @@ function fetchProducts(url) {
               console.log(data);
               product = data.product;
               console.log(product[2]);
+              document.querySelector(".modal").id = "${product[0]}";
               document.querySelector(".modal").innerHTML = `
               <button class="closeModal" onclick="toggleModal()">X</button>
               <img class="modalImg" src="${product[3]}" alt="">
@@ -59,12 +60,22 @@ function fetchProducts(url) {
                 <div class="addCart">
                   <div class="priceQuantity">
                     <p class="modalProductPrice">R${product[6]}</p>
-                    <input class="quantity" type="number" />
+                    <input class="quantity" type="number" value="1"/>
                   </div>
                   <button class="addToCart">Add to Cart</button>
                 </div>
               </div>
               `;
+              document
+                .querySelector(".addToCart")
+                .addEventListener("click", () => {
+                  addToCart(
+                    product[2],
+                    product[6],
+                    document.querySelector(".quantity").value,
+                    product[3]
+                  );
+                });
             });
         });
       });
@@ -75,4 +86,29 @@ fetchProducts(productUrl);
 
 function toggleModal() {
   document.querySelector(".modalContainer").classList.toggle("active");
+}
+
+document.querySelector(".fa-user").addEventListener("click", (e) => {
+  document.querySelector(".profileMenu").classList.toggle("active");
+});
+
+var cart = [];
+
+if (window.localStorage["cart"]) {
+  cart = JSON.parse(window.localStorage["cart"]);
+}
+
+function addToCart(name, price, qty, img) {
+  let item = { name: name, price: price, qty: parseInt(qty), img: img };
+  for (let x in cart) {
+    if (item.name == cart[x].name) {
+      cart[x].qty += item.qty;
+      window.localStorage["cart"] = JSON.stringify(cart);
+      console.log(JSON.parse(window.localStorage["cart"]));
+      return;
+    }
+  }
+  cart.push(item);
+  window.localStorage["cart"] = JSON.stringify(cart);
+  console.log(JSON.parse(window.localStorage["cart"]));
 }

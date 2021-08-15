@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Poiret+One&family=Roboto:wght@100;300&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap");
 
 * {
   padding: 0;
@@ -9,17 +10,16 @@
 
 body {
   position: relative;
-  font-family: "Roboto", sans-serif;
+  font-family: "Space Grotesk", sans-serif;
   position: relative;
   min-height: 100vh;
   background: #e8e7e2;
   margin-top: 100px;
-  padding: 0 20px;
-  padding-bottom: 20px;
+  padding: 20px;
 }
+
 .nav {
   position: fixed;
-  z-index: 1;
   top: 0;
   left: 0;
   right: 0;
@@ -28,16 +28,13 @@ body {
   padding: 20px;
   background: white;
 }
+
 .navIcons {
   display: flex;
 }
 
 .nav h2 {
   font-family: "Poiret One", cursive;
-}
-
-.nav i {
-  cursor: pointer;
 }
 
 .nav a {
@@ -72,51 +69,66 @@ body {
 }
 
 h1 {
-  position: relative;
-  font-family: "Poiret One", sans-serif;
-  margin-bottom: 30px;
+  font-family: "Montserrat", sans-serif;
+  margin-bottom: 20px;
 }
 
-h1:nth-of-type(1) {
-  margin-top: 40px;
+.cartContainer {
+  border: 1px solid black;
+  font-family: "Roboto", sans-serif;
 }
 
-h1::after {
-  position: absolute;
-  bottom: -10px;
-  left: 0;
-  content: "";
+h3 {
+  font-family: "Montserrat", sans-serif;
+}
+
+img {
+  width: 150px;
+  height: 150px;
+  margin-right: 10px;
+}
+
+.item {
+  display: flex;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid black;
+}
+
+.infoContainer {
   width: 100%;
-  height: 2px;
-  border-bottom: 2px solid #222;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-.editContainer div {
-  margin-bottom: 30px;
+.qtyRemoveContainer {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
 }
 
-.editContainer input {
-  margin-top: 10px;
-  outline: none;
-  width: 300px;
-  border: 1px solid #33333355;
-  padding: 5px;
-}
-
-.editContainer button {
-  width: 300px;
+.removeButton {
   background: #222;
   color: white;
   border: none;
+  padding: 5px 20px;
+}
+
+.clearCart {
+  background: #222;
+  color: white;
+  border: none;
+  padding: 10px 10px;
+  width: 100%;
+}
+
+.totalContainer {
+  display: flex;
+  justify-content: space-between;
+  font-size: 22px;
   padding: 10px;
 }
 
-.buttonContainer {
-  display: flex;
-  flex-direction: column;
-}
-
-.buttonContainer button:last-of-type {
-  margin-top: 10px;
-  background-color: red;
+.total {
 }

@@ -17,8 +17,8 @@ function previewFile(preview) {
 }
 
 function addProduct() {
-  let name = document.querySelector(".productName").value;
-  let image = document.querySelector("img").src;
+  let name = document.querySelector(".inputProductName").value;
+  let image = document.querySelector(".addImg").src;
   let category = document.querySelector(".productCategory").value;
   let description = document.querySelector(".productDescription").value;
   let price = document.querySelector(".productPrice").value;
@@ -31,6 +31,40 @@ function addProduct() {
     )}`,
     {
       method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `jwt ${window.localStorage["jwt-token"]}`,
+      },
+      body: JSON.stringify({
+        product_name: name,
+        product_image: image,
+        product_category: category,
+        product_description: description,
+        product_price: price,
+      }),
+    }
+  )
+    .then((res) => res.json())
+    .then((data) => {
+      console.log(data);
+    });
+}
+
+function editProduct(e) {
+  let product_id = parseInt(e.id);
+  console.log(product_id);
+  let name = document.querySelector(".modalProductName").value;
+  let image = document.querySelector(".modalImg").src;
+  let category = document.querySelector(".modalProductCategory").value;
+  let description = document.querySelector(".modalProductDescription").value;
+  let price = document.querySelector(".modalProductPrice").value;
+
+  console.log(name, category, description, price);
+
+  fetch(
+    `https://agile-tundra-03577.herokuapp.com/edit-product/${product_id}/`,
+    {
+      method: "PUT",
       headers: {
         "Content-Type": "application/json",
         Authorization: `jwt ${window.localStorage["jwt-token"]}`,
@@ -75,7 +109,7 @@ function fetchProducts(url) {
                                       <p class="price">R${product[6]}</p>
                                       <div class="buttonContainer">
                                         <button class="Edit" onclick="toggleModal()">Edit</button>
-                                        <button class="Delete">Delete</button>
+                                        <button class="Delete" onclick="deleteProduct(this)">Delete</button>
                                       </div>
                                     </div>`;
       });
@@ -90,6 +124,7 @@ function fetchProducts(url) {
               console.log(data);
               product = data.product;
               console.log(product[2]);
+              document.querySelector(".modal").id = product[0];
               document.querySelector(".modal").innerHTML = `
               <button class="closeModal" onclick="toggleModal()">X</button>
               <img class="modalImg" src="${product[3]}" alt="Image preview...">
@@ -99,17 +134,17 @@ function fetchProducts(url) {
                   <input class="modalProductName" type="text" placeholder="Name" value="${product[2]}"/>
 
                   <h3>Category</h3>
-                  <input class="productCategory" type="text" placeholder="Category" value="${product[4]}"/>
+                  <input class="modalProductCategory" type="text" placeholder="Category" value="${product[4]}"/>
 
                   <h3>Description</h3>
-                  <input class="productDescription" type="message" placeholder="Description" value="${product[5]}"/>
+                  <input class="modalProductDescription" type="message" placeholder="Description" value="${product[5]}"/>
                   
                   <h3>Price</h3>
-                  <input class="productPrice" type="number" placeholder="Price" value="${product[6]}"/>
+                  <input class="modalProductPrice" type="number" placeholder="Price" value="${product[6]}"/>
                   
                   <h3>Image</h3>
-                  <input class="productImage" type="file" onchange="previewFile(document.querySelector('.modalImg'))" />
-                  <button class="submitEdit">Save Changes</button>
+                  <input class="modalProductImage" type="file" onchange="previewFile(document.querySelector('.modalImg'))" />
+                  <button class="submitEdit" onclick="editProduct(document.querySelector('.modal'))">Save Changes</button>
                 </div>
               </div>
               `;
@@ -124,3 +159,22 @@ fetchProducts(productUrl);
 function toggleModal() {
   document.querySelector(".modalContainer").classList.toggle("active");
 }
+
+function deleteProduct(e) {
+  fetch(
+    `https://agile-tundra-03577.herokuapp.com/delete-product/${e.parentElement.parentElement.id}/`,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `jwt ${window.localStorage["jwt-token"]}`,
+      },
+    }
+  )
+    .then((res) => res.json())
+    .then((data) => console.log(data));
+}
+
+document.querySelector(".fa-user").addEventListener("click", (e) => {
+  document.querySelector(".profileMenu").classList.toggle("active");
+});
