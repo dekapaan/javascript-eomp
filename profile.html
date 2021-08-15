@@ -4,11 +4,76 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/profile.css" />
     <title>Document</title>
+    <script
+      src="https://kit.fontawesome.com/c29743a859.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
+    <div class="nav">
+      <h2>Monoya</h2>
+      <a href="/home.html">Shop</a>
+      <div class="navIcons">
+        <div class="profileContainer">
+          <i class="fas fa-user"></i>
+          <div class="profileMenu">
+            <a href="/profile.html">Your Profile</a>
+            <a href="/addProduct.html">Your products</a>
+          </div>
+        </div>
+        <a href=""><i class="fas fa-shopping-cart"></i></a>
+      </div>
+    </div>
+    <div></div>
+    <h1>Your Details</h1>
     <div class="detailsContainer"></div>
-    <button class="edit">Edit Profile</button>
+    <div class="editContainer">
+      <h1>Change details</h1>
+      <div>
+        <p>First Name</p>
+        <input
+          class="firstName"
+          type="text"
+          name="username"
+          placeholder="First Name"
+          value=""
+        />
+      </div>
+      <div>
+        <p>Last Name</p>
+        <input
+          class="lastName"
+          type="text"
+          name="username"
+          placeholder="Last Name"
+        />
+      </div>
+      <div>
+        <p>Email</p>
+        <input class="email" type="email" name="username" placeholder="Email" />
+      </div>
+      <div>
+        <p>Username</p>
+        <input
+          class="username"
+          type="text"
+          name="username"
+          placeholder="Username"
+        />
+      </div>
+      <div>
+        <p>Password</p>
+        <input
+          class="password"
+          type="text"
+          name="username"
+          placeholder="Password"
+        />
+      </div>
+      <button onclick="editDetails()">Save changes</button>
+    </div>
     <script src="/profile.js"></script>
   </body>
 </html>

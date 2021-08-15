@@ -2,22 +2,22 @@
 @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500&display=swap");
 
 * {
-  padding: 0;
   margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
 body {
-  position: relative;
-  font-family: "Space Grotesk", sans-serif;
-  position: relative;
   min-height: 100vh;
+  font-family: "Roboto", sans-serif;
   background: #e8e7e2;
   margin-top: 100px;
+  padding: 0 20px;
 }
 
 .nav {
   position: fixed;
+  z-index: 1;
   top: 0;
   left: 0;
   right: 0;
@@ -26,9 +26,16 @@ body {
   padding: 20px;
   background: white;
 }
+.navIcons {
+  display: flex;
+}
 
 .nav h2 {
   font-family: "Poiret One", cursive;
+}
+
+.nav i {
+  cursor: pointer;
 }
 
 .nav a {
@@ -39,7 +46,41 @@ body {
 .nav i {
   margin-left: 20px;
 }
-.productContainer {
+
+.profileMenu {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  right: 50px;
+  top: 50px;
+  background: white;
+  border: 1px solid #33333355;
+  padding: 10px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.profileMenu.active {
+  opacity: 1;
+  pointer-events: initial;
+}
+
+h1 {
+  position: relative;
+  font-family: "Poiret One", sans-serif;
+  margin-bottom: 30px;
+}
+h1::after {
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  content: "";
+  width: 100%;
+  height: 2px;
+  border-bottom: 2px solid #222;
+}
+
+.innerContainer {
   display: grid;
   grid-gap: 1rem;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -48,6 +89,8 @@ body {
 
 .product {
   margin: 40px 20px;
+  display: inline-block;
+  width: 250px;
 }
 
 .product img {
@@ -86,7 +129,7 @@ body {
   position: relative;
   display: flex;
   height: 70vh;
-  width: 60vw;
+  width: 70vw;
   padding: 20px;
   background: white;
   transition: 0.4s ease;
@@ -112,53 +155,47 @@ body {
   width: 50%;
 }
 
-.modalProductCategory {
-  font-weight: 100;
-}
-
-.modalProductName {
-  font-size: 30px;
-}
-
-.productDescription {
-  margin-top: 40px;
-}
-
-.addCart {
-  margin-top: 80px;
-  width: 100%;
-}
-
-.priceQuantity {
-  display: flex;
-  justify-content: space-between;
-}
-
-.modalProductPrice {
-  font-size: 20px;
-}
-
-.addToCart {
-  border: none;
-  background: #222;
-  color: white;
-  padding: 10px;
-  margin-top: 10px;
-  width: 100%;
-}
-
-button {
-  font-family: "Space Grotesk", sans-serif;
-}
-
 .closeModal {
   position: absolute;
   top: 20px;
   right: 20px;
-  font-size: 30px;
-  width: 40px;
-  height: 40px;
+  font-size: 10px;
+  text-align: center;
+  width: 20px;
+  height: 20px;
   background: #222;
   color: white;
   border: none;
+}
+
+.buttonContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.buttonContainer button {
+  width: 100%;
+  border: none;
+  background: #222;
+  color: white;
+  padding: 5px;
+  margin-top: 10px;
+}
+
+input {
+  margin-bottom: 20px;
+}
+
+.modal h3 {
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  margin-bottom: 10px;
+}
+
+.modal button {
+  border: none;
+  background: #222;
+  color: white;
+  padding: 5px;
 }

@@ -4,13 +4,43 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/product.css" />
+    <script
+      src="https://kit.fontawesome.com/c29743a859.js"
+      crossorigin="anonymous"
+    ></script>
     <title>Document</title>
   </head>
   <body>
+    <div class="nav">
+      <h2>Monoya</h2>
+      <a href="/home.html">Shop</a>
+      <div class="navIcons">
+        <div class="profileContainer">
+          <i class="fas fa-user"></i>
+          <div class="profileMenu">
+            <a href="/profile.html">Your Profile</a>
+            <a href="/addProduct.html">Your products</a>
+          </div>
+        </div>
+        <a href=""><i class="fas fa-shopping-cart"></i></a>
+      </div>
+    </div>
+    <div class="productOuterContainer">
+      <h1>Your Products</h1>
+      <div class="innerContainer"></div>
+    </div>
+    <div class="modalContainer">
+      <div class="modal"></div>
+    </div>
     <form onsubmit="addProduct(); return false">
       <input class="productName" type="text" placeholder="Name" />
-      <input class="productImage" type="file" onchange="previewFile();" />
-      <img src="" height="200" alt="Image preview..." />
+      <input
+        class="productImage"
+        type="file"
+        onchange="previewFile(document.querySelector('.addImg'));"
+      />
+      <img class="addImg" src="" height="200" alt="Image preview..." />
       <input class="productCategory" type="text" placeholder="Category" />
       <input class="productDescription" type="text" placeholder="Description" />
       <input class="productPrice" type="number" placeholder="Price" />

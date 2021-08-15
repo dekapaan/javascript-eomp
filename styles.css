@@ -135,6 +135,12 @@ form p {
 .switchButton {
   cursor: pointer;
 }
+
+.editContainer {
+  width: 100vw;
+  height: 100vh;
+}
+
 @media screen and (max-width: 1050px) {
   .container {
     flex-direction: column;
