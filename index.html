@@ -28,16 +28,12 @@
           type="password"
           placeholder="Password"
         />
-        <button class="signInButton">Log in</button>
+        <button class="signInButton button">Log in</button>
         <p>
           Haven't registered yet? <span class="switchButton">Click here</span>
         </p>
       </form>
-      <form
-        class="register"
-        action="https://agile-tundra-03577.herokuapp.com/register/"
-        method="POST"
-      >
+      <form class="register" onsubmit="return false">
         <h2>Sign Up</h2>
         <input
           class="firstName"
@@ -64,7 +60,7 @@
           name="password"
           placeholder="Password"
         />
-        <button class="signInButton">Register</button>
+        <button class="signUpButton button">Register</button>
         <p>Already registered? <span class="switchButton">Click here</span></p>
       </form>
     </div>

@@ -1,5 +1,5 @@
-function previewFile(preview) {
-  const file = document.querySelector(".productImage").files[0];
+function previewFile(preview, input) {
+  const file = input.files[0];
   const reader = new FileReader();
 
   reader.addEventListener(
@@ -25,6 +25,10 @@ function addProduct() {
 
   console.log(name, category, description, price);
 
+  if (!name || !image || !category || !description || !price) {
+    alert("One or more entry fields empty");
+    return;
+  }
   fetch(
     `https://agile-tundra-03577.herokuapp.com/add-product/${parseInt(
       window.localStorage["user-id"]
@@ -44,9 +48,17 @@ function addProduct() {
       }),
     }
   )
-    .then((res) => res.json())
+    .then((res) => {
+      if (!res.isJson()) {
+        throw new Error("Image file has incorrect format");
+      }
+      res.json();
+    })
     .then((data) => {
       console.log(data);
+      if (data.status_code != 200) {
+        alert(data.message);
+      }
     });
 }
 
@@ -143,7 +155,7 @@ function fetchProducts(url) {
                   <input class="modalProductPrice" type="number" placeholder="Price" value="${product[6]}"/>
                   
                   <h3>Image</h3>
-                  <input class="modalProductImage" type="file" onchange="previewFile(document.querySelector('.modalImg'))" />
+                  <input class="modalProductImage" type="file" onchange="previewFile(document.querySelector('.modalImg'), document.querySelector('.modalProductImage'))" />
                   <button class="submitEdit" onclick="editProduct(document.querySelector('.modal'))">Save Changes</button>
                 </div>
               </div>
